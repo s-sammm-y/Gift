@@ -102,7 +102,7 @@ function App() {
 
           <section className="pt-6">
             <div className="bg-black/50 rounded-md">
-              <p className="p-4 text-center text-white justify-center">
+              <p className="p-4 text-center text-white justify-center playwrite-in-main-text">
                 {text}
                 <span>
                 <Cursor/>
@@ -111,11 +111,13 @@ function App() {
             </div>
           </section>
 
-          <div className='Ending'>
+          <div className='Ending p-4'>
             {isTypingComplete && (
-            <button className='pacifico-regular pt-5 text-center justify-center h-20 w-20 bg-opacity-0' 
+            <button className='pacifico-regular text-center justify-center h-20 w-20 bg-opacity-0 last' 
             onClick={handleSendMessage}>
-              SECRECT TEXT CLICK HERE
+              <p className=''>
+                SECRET TEXT
+              </p>
             </button>
             )}
 
