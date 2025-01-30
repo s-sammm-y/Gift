@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+.heart {
+    --c: rgb(192, 171, 132);
+    width: 90px;
+    aspect-ratio: 1;
+    background:
+      /* 1 */ radial-gradient(circle at 60% 65%, var(--c) 64%, #0000 65%) top left/50% 50%,
+      /* 2 */ radial-gradient(circle at 40% 65%, var(--c) 64%, #0000 65%) top right/50% 50%,
+      /* 3 */ conic-gradient(from -45deg at 50% 85.5%, var(--c) 90deg, #0000 0) bottom/100% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.932)); /* Heart-shaped shadow */
+    animation: pulse 1.5s ease-in-out infinite; /* Animation to "ping" */
+    color: black; /* Text color */
+    font-size: 13px; /* Adjust text size */
+    text-align: center; /* Center text */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the text inside the button */
+    cursor: pointer;
+    padding-bottom: 8px;
+}
+  
+  /* Animation for the pulse effect */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1); /* Slightly bigger */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .pacifico-regular {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
