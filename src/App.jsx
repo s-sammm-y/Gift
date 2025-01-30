@@ -11,17 +11,26 @@ function App() {
   const [buttonText,setButtonText] = useState("TAP HERE BBG");
   const timeoutRef = useRef(null);
   const [isTypingComplete,setIsTypingComplete] = useState(false);
-  const fullText =
-      'heloowasb hdbiuadhsabdhbsad isabdiasdsa.';
+  const [fullText,setFullText]=useState('');
 
   const audioRef = useRef(null);
   const [sendMessegeTextDisplay,setSendMessageTextDisplay] = useState('');
   const [checkResponse,setCheckResponse]=useState("");
   
-    const typewriter = (textToType, i = 0) => {
+  useEffect(()=>{
+    const loadTextFile = async()=>{
+      const response = await fetch('/Gift/letter.txt');
+      const text = await response.text();
+      setFullText(text);
+    }
+
+    loadTextFile();
+  },[]);
+
+  const typewriter = (textToType, i = 0) => {
     if (i < textToType.length) {
       setText((prev) => prev + textToType[i]);
-      timeoutRef.current = setTimeout(() => typewriter(textToType, i + 1), 150);
+      timeoutRef.current = setTimeout(() => typewriter(textToType, i + 1), 80);
     }else{
       setIsTypingComplete(true);
     }
@@ -81,6 +90,8 @@ function App() {
       setCheckResponse('')
       setSendMessageTextDisplay('Check your phone Message Inbox babygirl');
       setIsTypingComplete(false);
+
+
     }catch(err){
       console.error('Error making post request',err);
       setCheckResponse('Something is wrong tell your Boyfriend to fix me');
@@ -101,8 +112,8 @@ function App() {
         </button>
 
           <section className="pt-6">
-            <div className="bg-black/50 rounded-md">
-              <p className="p-4 text-center text-white justify-center playwrite-in-main-text">
+            <div className="rounded-md">
+              <p className="p-4 text-center text-sm text-shadow-black-main text-white justify-center playwrite-in-main-text">
                 {text}
                 <span>
                 <Cursor/>
@@ -113,15 +124,15 @@ function App() {
 
           <div className='Ending p-4'>
             {isTypingComplete && (
-            <button className='pacifico-regular text-center justify-center h-20 w-20 bg-opacity-0 last' 
+            <button className='h-15 last' 
             onClick={handleSendMessage}>
-              <p className=''>
+              <p className='pacifico-regular text-sm'>
                 SECRET TEXT
               </p>
             </button>
             )}
 
-            <p className='pacifico-regular pt-5'>
+            <p className='pacifico-regular text-white text-shadow-black pt-5'>
               {sendMessegeTextDisplay}
               {checkResponse}
             </p>
