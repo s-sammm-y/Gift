@@ -15,6 +15,7 @@ function App() {
   const audioRef = useRef(null);
   const [sendMessegeTextDisplay,setSendMessageTextDisplay] = useState('');
   const [checkResponse,setCheckResponse]=useState("");
+  const [showButton,setShowButton] = useState(true);
   
   const typewriter = (textToType, i = 0) => {
     if (i < textToType.length) {
@@ -78,8 +79,7 @@ function App() {
       console.log(response.data.message);
       setCheckResponse('')
       setSendMessageTextDisplay('Check your phone Message Inbox babygirl');
-      setIsTypingComplete(false);
-
+      setShowButton(false);
 
     }catch(err){
       console.error('Error making post request',err);
@@ -112,7 +112,7 @@ function App() {
           </section>
 
           <div className='Ending p-4'>
-            {isTypingComplete && (
+            {isTypingComplete && showButton && (
             <button className='h-15 last' 
             onClick={handleSendMessage}>
               <p className='pacifico-regular text-sm'>
