@@ -65,10 +65,12 @@ function App() {
       setButtonText("REPLAY");
       setIsTypingComplete(false);
       setSendMessageTextDisplay('');
+      setCheckResponse('');
     }else{
       setButtonText("STOP")
       setIsTypingComplete(false);
       setSendMessageTextDisplay('');
+      setCheckResponse('');
     }
   }
 
