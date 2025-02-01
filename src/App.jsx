@@ -10,7 +10,7 @@ function App() {
   const [buttonText,setButtonText] = useState("TAP HERE BBG");
   const timeoutRef = useRef(null);
   const [isTypingComplete,setIsTypingComplete] = useState(false);
-  const fullText="Hey,Ana thank you for waiting all this moment for the gifts.I wanted to let you know that I am very grateful for the fact that I got the love of a person so beautiful and astonoshing like you.Everytime I see you run towards me I kinda fall in a new dimension where every flower and natural elements smell like you.I have never ever had a feeling like this making me question myself,maybe this is called love.You are a part of my life,a daily necessity for my heart to keeping pumping blood throughout my body.You are my healer.I love you Ana BBG";
+  const fullText="Hey,Ana thank you for waiting all this moment for the gifts.I wanted to let you know that I am very grateful for the fact that I got the love of a person so beautiful and astonoshing like you.Everytime I see you run towards me I kinda fall in a new dimension where every flower and natural element smell like you.I have never ever had a feeling like this making me question myself,maybe this is called love.You are a part of my life,a daily necessity for my heart to keep pumping blood throughout my body.You are my healer.I love you Ana BBG";
 
   const audioRef = useRef(null);
   const [drinkWater,setDrinkWater] = useState(false)
