@@ -3,7 +3,6 @@ import './App.css';
 import { Cursor } from 'react-simple-typewriter';
 import bgImage from './assets/IMG_9724.jpg'
 import MyAudio from './assets/audio.mp3'
-import axios from 'axios';
 
 function App() {
   const [text, setText] = useState('');
@@ -11,10 +10,10 @@ function App() {
   const [buttonText,setButtonText] = useState("TAP HERE BBG");
   const timeoutRef = useRef(null);
   const [isTypingComplete,setIsTypingComplete] = useState(false);
-  const fullText="f."
+  const fullText="Hey,Ana thank you for waiting all this moment for the gifts.I wnated to let you know that I am very grateful for the fact that I got the love of a person so beautiful and astonoshing like you.Everytime I see you run towards me I kinda fall in a new dimension where every flower and natural elements smell like you.I have never ever had a feeling like this making me question myself,maybe this is called love.You are a part of my life,a daily necessity for my heart to keeping pumping blood throughout my body.I love you Ana,you are not just a girl you are a healer and I'll always appreciate your efforts to keep our relationship stable.From the very first day we met I had this feeling of safety and compassion,I couldnt resist myself from loving you.You are my addiction,you promote the happy hormones in my body and I'm always ready to share my life with you.I love you Ana you the most beautiful girl ever happened in this world.My sweetheart BBG."
+
   const audioRef = useRef(null);
-  const [sendMessegeTextDisplay,setSendMessageTextDisplay] = useState('');
-  const [checkResponse,setCheckResponse]=useState("");
+  const [drinkWater,setDrinkWater] = useState(false)
   
   const typewriter = (textToType, i = 0) => {
     if (i < textToType.length) {
@@ -64,30 +63,19 @@ function App() {
     if(check){
       setButtonText("REPLAY");
       setIsTypingComplete(false);
-      setSendMessageTextDisplay('');
-      setCheckResponse('');
+      setDrinkWater(false);
     }else{
       setButtonText("STOP")
       setIsTypingComplete(false);
-      setSendMessageTextDisplay('');
-      setCheckResponse('');
+      setDrinkWater(false);
     }
   }
 
-  const handleSendMessage = async ()=>{
-    try{
-      const response = await axios.post("http://localhost:5000/send-message")
-      console.log(response.data.message);
-      setCheckResponse('')
-      setSendMessageTextDisplay('Check your phone Message Inbox babygirl');
-      setIsTypingComplete(false)
-
-    }catch(err){
-      console.error('Error making post request',err);
-      setCheckResponse('Something is wrong tell your Boyfriend to fix me');
-      setIsTypingComplete(false);
-    }
+  const handleRevealText =()=>{
+    setIsTypingComplete(false);
+    setDrinkWater(true);
   }
+  
 
   return (
     <>
@@ -104,7 +92,7 @@ function App() {
 
           <section className="pt-6">
             <div className="rounded-md">
-              <p className="p-4 text-center text-sm text-shadow-black-main text-white justify-center playwrite-in-main-text">
+              <p className="p-4 text-center text-shadow-black-main text-white justify-center playwrite-in-main-text">
                 {text}
                 <span>
                 <Cursor/>
@@ -116,17 +104,32 @@ function App() {
           <div className='Ending p-4'>
             {isTypingComplete && (
             <button className='h-15 last' 
-            onClick={handleSendMessage}>
+            onClick={handleRevealText}>
               <p className='pacifico-regular text-sm'>
                 SECRET TEXT
               </p>
             </button>
             )}
 
-            <p className='pacifico-regular text-white text-shadow-black pt-5'>
-              {sendMessegeTextDisplay}
-              {checkResponse}
-            </p>
+            <div className='revealText pacifico-regular'>
+              {drinkWater && (<div className="keyboard">
+                <span className="key">D</span>
+                <span className="key">R</span>
+                <span className="key">I</span>
+                <span className="key">N</span>
+                <span className="key">K</span>
+                <span className="key">&nbsp;</span> 
+                <span className="key">W</span>
+                <span className="key">A</span>
+                <span className="key">T</span>
+                <span className="key">E</span>
+                <span className="key">R</span>
+                <span className="key">&nbsp;</span>
+                <span class="key hh">&hearts;</span>
+
+              </div>)}
+            </div>
+
           </div>
 
           </div >
